@@ -65,21 +65,22 @@ public class BookRepositoryImpl implements BookRepository {
 		Set<Book> booksByPublisher = new HashSet<Book>();
 		Set<Book> booksByCategory = new HashSet<Book>();
 		Set<String> booksByFilter = filter.keySet();
-		
 		if(booksByFilter.contains("publisher")) {
+			System.out.println("publisher!");
 			for (int j = 0; j < filter.get("publisher").size(); j++) {
 				String publisherName = filter.get("publisher").get(j);
 				for(int i = 0; i < listOfBooks.size(); i++) {
 					Book book = listOfBooks.get(i);
-					
 					if(publisherName.equalsIgnoreCase(book.getPublisher())) {
 						booksByPublisher.add(book);
+						
 					}
 				}
 			}
 		}
 		
 		if(booksByFilter.contains("category")) {
+			System.out.println("category!");
 			for (int i = 0; i < filter.get("category").size(); i++) {
 				String category = filter.get("category").get(i);
 				List<Book> list = getBookListByCategory(category);
@@ -87,8 +88,10 @@ public class BookRepositoryImpl implements BookRepository {
 			}
 		}
 		booksByCategory.retainAll(booksByPublisher);
+//		System.out.println(booksByCategory);
 		return booksByCategory;
 	}
+	
 	public Book getBookById(String bookId) {
 		Book bookInfo = null;
 		for (int i = 0; i < listOfBooks.size(); i++) {
@@ -102,5 +105,9 @@ public class BookRepositoryImpl implements BookRepository {
 			throw new IllegalArgumentException("도서 ID가 " + bookId + "인 해당 도서를 찾을 수 없습니다.");
 		}
 		return bookInfo;
+	}
+	
+	public void setNewBook(Book book) {
+		listOfBooks.add(book);
 	}
 }

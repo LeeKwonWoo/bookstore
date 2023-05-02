@@ -37,10 +37,10 @@
 	        <param-name>encoding</param-name>
 	        <param-value>UTF-8</param-value>
 	    </init-param>
-	    <filter-mapping>
+	</filter>
+	<filter-mapping>
 	        <filter-name>encodingFilter</filter-name>
 	        <url-pattern>/*</url-pattern>
-	    </filter-mapping>
-	</filter>
+    </filter-mapping>
 	
 </web-app>
