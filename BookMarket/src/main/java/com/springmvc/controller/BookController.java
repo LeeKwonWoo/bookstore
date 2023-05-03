@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springmvc.domain.Book;
@@ -70,6 +72,18 @@ public class BookController {
 	
 	@PostMapping("/add")
 	public String submitAddNewBook(@ModelAttribute("NewBook") Book book) {
+		MultipartFile bookImage = book.getBookImage();
+		String saveName = bookImage.getOriginalFilename();
+		File saveFile = new File("/resources/images/", saveName);
+		
+		if (bookImage != null && !bookImage.isEmpty()) {
+			try {
+				bookImage.transferTo(saveFile);
+			} catch (Exception e) {
+				throw new RuntimeException("도서 이미지 업로드가 실패하였습니다.", e);
+			}
+		}
+		
 		bookService.setNewBook(book);
 		return "redirect:/books"; //웹 요청 URL을 강제로 /books로 이동시켜 @RequestMapping("/books")에 매핑
 	}
@@ -81,7 +95,7 @@ public class BookController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.setAllowedFields("bookId","name","unitPrice","author","description","publisher","category","unitsInStock","totalPages","releaseDate","condition");
+		binder.setAllowedFields("bookId","name","unitPrice","author","description","publisher","category","unitsInStock","totalPages","releaseDate","condition","bookImage");
 	}
 	
 }
