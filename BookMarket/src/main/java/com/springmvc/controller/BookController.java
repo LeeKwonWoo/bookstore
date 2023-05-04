@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.MatrixVariable;
@@ -21,6 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springmvc.domain.Book;
+import com.springmvc.exception.BookIdException;
+import com.springmvc.exception.CategoryException;
 import com.springmvc.service.BookService;
 
 @Controller
@@ -48,6 +53,9 @@ public class BookController {
 	@GetMapping("/{category}")
 	public String requestBooksByCategory(@PathVariable("category") String bookCategory, Model model) {
 		List<Book> booksByCategory = bookService.getBookListByCategory(bookCategory);
+		if(booksByCategory == null || booksByCategory.isEmpty()) {
+			throw new CategoryException();
+		}
 		model.addAttribute("bookList", booksByCategory);
 		return "books";
 	}
@@ -96,6 +104,16 @@ public class BookController {
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.setAllowedFields("bookId","name","unitPrice","author","description","publisher","category","unitsInStock","totalPages","releaseDate","condition","bookImage");
+	}
+	
+	@ExceptionHandler(value= {BookIdException.class})
+	public ModelAndView handlerError(HttpServletRequest req, BookIdException exception) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("invalidBookId", exception.getBookId());
+		mav.addObject("exception", exception);
+		mav.addObject("uri", req.getRequestURL() + "?" + req.getQueryString());
+		mav.setViewName("errorBook");
+		return mav;
 	}
 	
 }
