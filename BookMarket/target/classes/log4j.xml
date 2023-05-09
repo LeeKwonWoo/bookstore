@@ -6,13 +6,45 @@
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
 		</layout>
 	</appender>
 	
+	<!-- 파일에 출력하기 -->
+	<appender name="monitor" class="org.apache.log4j.RollingFileAppender">
+	    <param name="append" value="false"></param>
+	    <param name="maxFileSize" value="10KB"></param>
+	    <param name="maxBackupIndex" value="5"></param>
+	    <param name="file" value="c:/logs/monitor.log"></param>
+	    <layout class="org.apche.log4j.PatternLayout">
+	        <param name="ConversationPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"></param>
+	    </layout>
+	    <filter class="org.apche.log4j.varia.LevelRangeFilter">
+	        <param name="LevelMin" value="info"></param>
+	        <param name="LevelMax" value="info"></param>
+	    </filter>
+	</appender>
+	
+	<appender name="audit" class="org.apache.log4j.RollingFileAppender">
+	    <param name="append" value="false"></param>
+	    <param name="maxFileSize" value="10KB"></param>
+	    <param name="maxBackupIndex" value="5"></param>
+	    <param name="file" value="c:/logs/monitor.log"></param>
+	    <layout class="org.apche.log4j.PatternLayout">
+	        <param name="ConversationPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"></param>
+	    </layout>
+	    <filter class="org.apche.log4j.varia.LevelRangeFilter">
+	        <param name="LevelMin" value="warn"></param>
+	        <param name="LevelMax" value="warn"></param>
+	    </filter>
+	</appender>
+	
+	
 	<!-- Application Loggers -->
-	<logger name="com.springmvc.controller">
+	<logger name="com.springmvc">
 		<level value="info" />
+		<appender-ref ref="monitor"></appender-ref>
+		<appender-ref ref="audit"></appender-ref>
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

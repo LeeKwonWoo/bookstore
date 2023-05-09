@@ -28,4 +28,9 @@
 	    <beans:property name="maxUploadSize" value="10240000"/>
 	</beans:bean>
 	
+	<interceptors>
+	    <beans:bean class="com.springmvc.interceptor.MonitoringInterceptor"></beans:bean>
+	    <beans:bean class="com.springmvc.interceptor.AuditingInterceptor"></beans:bean>
+	</interceptors>
+	
 </beans:beans>
