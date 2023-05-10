@@ -31,6 +31,18 @@
 	<interceptors>
 	    <beans:bean class="com.springmvc.interceptor.MonitoringInterceptor"></beans:bean>
 	    <beans:bean class="com.springmvc.interceptor.AuditingInterceptor"></beans:bean>
+	    <beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+	        <beans:property name="paramName" value="language"/>
+	    </beans:bean>
+	    
 	</interceptors>
 	
+	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+	    <beans:property name="basename" value="message"></beans:property>
+	    <beans:property name="defaultEncoding" value="UTF-8"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+	    <beans:property name="defaultLocale" value="ko"></beans:property>
+	</beans:bean>
 </beans:beans>

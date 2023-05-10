@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MonitoringInterceptor implements HandlerInterceptor {
 	ThreadLocal<StopWatch> stopWatchLocal = new ThreadLocal<StopWatch>();
 	public Logger logger = LoggerFactory.getLogger(this.getClass());
-	public boolean preHandler(HttpServletRequest request, HttpServletResponse response, Object handler) {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		StopWatch stopWatch = new StopWatch(handler.toString());
 		stopWatch.start(handler.toString());
 		stopWatchLocal.set(stopWatch);
@@ -51,6 +51,5 @@ public class MonitoringInterceptor implements HandlerInterceptor {
 		calendar.setTimeInMillis(System.currentTimeMillis());
 		return formatter.format(calendar.getTime());
 	}
-	
 	
 }

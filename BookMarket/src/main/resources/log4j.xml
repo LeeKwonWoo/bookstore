@@ -16,10 +16,10 @@
 	    <param name="maxFileSize" value="10KB"></param>
 	    <param name="maxBackupIndex" value="5"></param>
 	    <param name="file" value="c:/logs/monitor.log"></param>
-	    <layout class="org.apche.log4j.PatternLayout">
-	        <param name="ConversationPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"></param>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"></param>
 	    </layout>
-	    <filter class="org.apche.log4j.varia.LevelRangeFilter">
+	    <filter class="org.apache.log4j.varia.LevelRangeFilter">
 	        <param name="LevelMin" value="info"></param>
 	        <param name="LevelMax" value="info"></param>
 	    </filter>
@@ -30,10 +30,10 @@
 	    <param name="maxFileSize" value="10KB"></param>
 	    <param name="maxBackupIndex" value="5"></param>
 	    <param name="file" value="c:/logs/monitor.log"></param>
-	    <layout class="org.apche.log4j.PatternLayout">
-	        <param name="ConversationPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"></param>
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"></param>
 	    </layout>
-	    <filter class="org.apche.log4j.varia.LevelRangeFilter">
+	    <filter class="org.apache.log4j.varia.LevelRangeFilter">
 	        <param name="LevelMin" value="warn"></param>
 	        <param name="LevelMax" value="warn"></param>
 	    </filter>
