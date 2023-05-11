@@ -6,10 +6,12 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +29,16 @@ import com.springmvc.domain.Book;
 import com.springmvc.exception.BookIdException;
 import com.springmvc.exception.CategoryException;
 import com.springmvc.service.BookService;
+import com.springmvc.validator.BookValidator;
 
 @Controller
 @RequestMapping("/books")
 public class BookController {
 	@Autowired
 	private BookService bookService;
+
+	@Autowired
+	private BookValidator bookValidator;
 	
 	@RequestMapping
 	public String requestBookList(Model model) {
@@ -79,7 +85,11 @@ public class BookController {
 	}
 	
 	@PostMapping("/add")
-	public String submitAddNewBook(@ModelAttribute("NewBook") Book book) {
+	public String submitAddNewBook(@Valid @ModelAttribute("NewBook") Book book, BindingResult result) {
+		if(result.hasErrors()) {
+			return "addBook";
+		}
+		
 		MultipartFile bookImage = book.getBookImage();
 		String saveName = bookImage.getOriginalFilename();
 		File saveFile = new File("/resources/images/", saveName);
@@ -103,6 +113,7 @@ public class BookController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
+		binder.setValidator(bookValidator);
 		binder.setAllowedFields("bookId","name","unitPrice","author","description","publisher","category","unitsInStock","totalPages","releaseDate","condition","bookImage");
 	}
 	

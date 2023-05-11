@@ -10,7 +10,7 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven enable-matrix-variables="true"/>
+	<annotation-driven enable-matrix-variables="true" validator="validator"/>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
@@ -38,10 +38,23 @@
 	</interceptors>
 	
 	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-	    <beans:property name="basename" value="message"></beans:property>
+	    <beans:property name="basename" value="messages"></beans:property>
 	    <beans:property name="defaultEncoding" value="UTF-8"></beans:property>
 	</beans:bean>
 	
+	<beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+	    <beans:property name="validationMessageSource" ref="messageSource"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="unitsInStockvalidator" class="com.springmvc.validator.UnitsInStockValidator"/>
+    <beans:bean id="bookvalidator" class="com.springmvc.validator.BookValidator">
+	    <beans:property name="springValidators">
+	        <beans:set>
+	            <beans:ref bean="unitsInStockValidator"></beans:ref>
+	        </beans:set>
+	    </beans:property>
+	</beans:bean>
+		
 	<beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 	    <beans:property name="defaultLocale" value="ko"></beans:property>
 	</beans:bean>

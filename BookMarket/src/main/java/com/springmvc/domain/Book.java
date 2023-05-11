@@ -1,10 +1,25 @@
 package com.springmvc.domain;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import org.springframework.web.multipart.MultipartFile;
+import com.springmvc.validator.BookId;
 
 public class Book {
+	@BookId
+	@Pattern(regexp="ISBN[1-9]+", message="{Pattern.NewBook.bookId}")
 	private String bookId;		// 도서 ID
+	
+	@Size(min=4, max=50, message="{Size.NewBook.name}")
 	private String name;		// 도서명
+	
+	@Min(value=0, message="{Min.NewBook.unitPrice")
+	@Digits(integer=8, fraction=2, message="{Digits.NewBook.unitPrice}")
+	@NotNull(message="{NotNull.NewBook.unitPrice}")
 	private int unitPrice;		// 가격
 	private String author;		// 저자
 	private String description;	// 설명
