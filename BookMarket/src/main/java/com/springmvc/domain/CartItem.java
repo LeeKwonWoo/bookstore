@@ -21,6 +21,7 @@ public class CartItem {
 
 	public void setBook(Book book) {
 		this.book = book;
+		this.updateTotalPrice();
 	}
 
 	public int getQuantity() {
@@ -29,6 +30,7 @@ public class CartItem {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+		this.updateTotalPrice();
 	}
 
 	public int getTotalPrice() {

@@ -21,6 +21,7 @@ public class Book {
 	@Digits(integer=8, fraction=2, message="{Digits.NewBook.unitPrice}")
 	@NotNull(message="{NotNull.NewBook.unitPrice}")
 	private int unitPrice;		// 가격
+	
 	private String author;		// 저자
 	private String description;	// 설명
 	private String publisher;	// 출판사
