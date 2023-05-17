@@ -4,13 +4,13 @@ function addToCart(action) {
 	alert("도서가 장바구니에 추가되었습니다!");
 }
 
-function removeCart(action) {
+function removeFromCart(action) {
 	document.removeForm.action = action;
 	document.removeForm.submit();
 	window.location.reload();
 }
 
 function clearCart() {
-	document.clearform.submit();
+	document.clearForm.submit();
 	window.location.reload();
 }

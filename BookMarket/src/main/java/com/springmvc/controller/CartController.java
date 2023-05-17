@@ -76,7 +76,7 @@ public class CartController {
 		cartService.update(sessionId, cart);
 	}
 	
-	@PutMapping("/remove/{bookid}")
+	@PutMapping("/remove/{bookId}")
 	@ResponseStatus(value=HttpStatus.NO_CONTENT)
 	public void removeCartByItem(@PathVariable String bookId, HttpServletRequest request) {
 		//장바구니 ID인 세션 ID 가져오기
@@ -85,7 +85,7 @@ public class CartController {
 		if (cart == null) 
 			cart = cartService.create(new Cart(sessionId));
 			
-		Book book = bookService.getBookById(bookId);
+			Book book = bookService.getBookById(bookId);
 			
 		if(book == null)
 			throw new IllegalArgumentException(new BookIdException(bookId));
