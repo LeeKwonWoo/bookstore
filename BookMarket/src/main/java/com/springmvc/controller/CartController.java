@@ -84,7 +84,6 @@ public class CartController {
 		Cart cart = cartService.read(sessionId);
 		if (cart == null) 
 			cart = cartService.create(new Cart(sessionId));
-			
 			Book book = bookService.getBookById(bookId);
 			
 		if(book == null)

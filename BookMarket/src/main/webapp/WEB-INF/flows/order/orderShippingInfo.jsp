@@ -70,7 +70,7 @@
 				<div class="form-group row">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button class="btn btn-default" name="_eventId_backToCustomerInfo">이전</button>
-						<input type="submit" class="btn btn-primary" value="등록" name="_eventId_customerInfo"/>
+						<input type="submit" class="btn btn-primary" value="등록" name="_eventId_shippingInfo"/>
 						<button class="btn btn-default" name="_eventId_cancel">취소</button>
 					</div>
 				</div>

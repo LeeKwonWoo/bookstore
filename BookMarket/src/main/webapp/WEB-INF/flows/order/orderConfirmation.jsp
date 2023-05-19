@@ -87,7 +87,7 @@
 					</table>
 					<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
 					<button class="btn btn-default" name="_eventId_backToCustomerInfo">이전</button>
-					<input type="submit" class="btn btn-primary" value="등록" name="_eventId_customerInfo"/>
+					<button type="submit" class="btn btn-success" name="_eventId_orderConfirmed">주문완료</button>
 					<button class="btn btn-default" name="_eventId_cancel">취소</button>
 				</div>
 			</div>

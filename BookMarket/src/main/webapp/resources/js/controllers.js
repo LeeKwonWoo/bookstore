@@ -8,9 +8,11 @@ function removeFromCart(action) {
 	document.removeForm.action = action;
 	document.removeForm.submit();
 	window.location.reload();
+	alert("도서가 삭제되었습니다!");
 }
 
 function clearCart() {
 	document.clearForm.submit();
 	window.location.reload();
+	alert("도서가 모두 삭제되었습니다!");
 }

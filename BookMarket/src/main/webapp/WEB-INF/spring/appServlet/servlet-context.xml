@@ -49,8 +49,8 @@
 	    <beans:property name="validationMessageSource" ref="messageSource"></beans:property>
 	</beans:bean>
 	
-	<beans:bean id="unitsInStockvalidator" class="com.springmvc.validator.UnitsInStockValidator"/>
-    <beans:bean id="bookvalidator" class="com.springmvc.validator.BookValidator">
+	<beans:bean id="unitsInStockValidator" class="com.springmvc.validator.UnitsInStockValidator"/>
+    <beans:bean id="bookValidator" class="com.springmvc.validator.BookValidator">
 	    <beans:property name="springValidators">
 	        <beans:set>
 	            <beans:ref bean="unitsInStockValidator"></beans:ref>

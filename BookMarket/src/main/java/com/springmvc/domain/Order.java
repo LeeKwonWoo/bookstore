@@ -69,5 +69,4 @@ public class Order implements Serializable {
 		} else if (!orderId.equals(other.orderId)) return false; 
 			return true;
 	}
-		
 }

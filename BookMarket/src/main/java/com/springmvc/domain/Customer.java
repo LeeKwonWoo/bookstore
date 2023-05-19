@@ -14,18 +14,18 @@ public class Customer implements Serializable {
 		this.address = new Address();
 	}
 	
-	public Customer(String cutomerId, String name) {
+	public Customer(String customerId, String name) {
 		this();
-		this.customerId = cutomerId;
+		this.customerId = customerId;
 		this.name = name;
 	}
 
-	public String getCutomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCutomerId(String cutomerId) {
-		this.customerId = cutomerId;
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getName() {
