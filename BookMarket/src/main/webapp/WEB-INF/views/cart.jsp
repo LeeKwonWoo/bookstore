@@ -13,20 +13,6 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand navbar-dark bg-dark">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="./home">Home</a>
-			</div>
-		</div>
-	</nav>
-	
-	<div class="jumbotron">
-		<div class="container">
-			<h1 class="display-3">장바구니</h1>
-		</div>
-	</div>
-	
 	<div class="container">
 		
 		
@@ -68,10 +54,6 @@
 			</table>
 			<a href="<c:url value="/books"/>" class="btn btn-secondary">&laquo; 쇼핑 계속하기</a>
 		</div>
-		<hr>
-		<footer>
-			<p>&copy; BookMarket</p>
-		</footer>
 	</div>
 </body>
 </html>

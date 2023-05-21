@@ -10,22 +10,7 @@
 <title>Shipping</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand navbar-dark bg-dark">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="./home">Home</a>
-			</div>
-		</div>
-	</nav>
-	
-	<div class="jumbotron">
-		<div class="container">
-			<h1 class="display-3">
-				배송정보
-			</h1>
-		</div>
-	</div>
-	
+		
 	<div class="container">
 		<form:form modelAttribute="order.shipping" class="form-horizontal">
 			<fieldset>
