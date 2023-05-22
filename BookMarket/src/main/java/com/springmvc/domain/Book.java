@@ -36,6 +36,8 @@ public class Book implements Serializable {
 	private String releaseDate;	// 출판일 (월 / 년)
 	private String condition;	// 신규 도서 또는 중고 도서 또는 전자책
 	private MultipartFile bookImage; // 도서 이미지
+	private String fileName;
+	
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -111,6 +113,12 @@ public class Book implements Serializable {
 	}
 	public void setBookImage(MultipartFile bookImage) {
 		this.bookImage = bookImage;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 	
 }

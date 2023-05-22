@@ -13,11 +13,7 @@
 <body>
 	
 	<div class="container">
-		<div class="float-right">
-			<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-				<input type="submit" class="btn btn-sm btn-success" value="Logout"/>
-			</form:form>
-		</div>
+		
 		
 		<div class="float-right" style="padding-right:30px">
 			<a href="?language=ko">Korean</a>|<a href="?language=en">English</a>
